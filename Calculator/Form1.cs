@@ -27,6 +27,8 @@ namespace Calculator
             if (label.Text[0] == '-')
                 if (label.Text.Length > 1 && label.Text[1] == '0' && (label.Text.IndexOf(",") != 2))
                     label.Text = label.Text.Remove(1, 1);
+            if (label.Text[0] == ',')
+                label.Text = '0' + label.Text;
         }
 
         private bool CanPress() 
@@ -85,7 +87,8 @@ namespace Calculator
         private void buttonDot_Click(object sender, EventArgs e)
         {
             if ((label.Text.IndexOf(",") == -1) && (label.Text.IndexOf("∞") == -1)) 
-                label.Text += ","; 
+                label.Text += ",";
+            CorrectNumber();
         }
 
         private void buttonEquals_Click(object sender, EventArgs e)
